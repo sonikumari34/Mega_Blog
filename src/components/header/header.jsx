@@ -37,12 +37,14 @@ function Header() {
       active: authStatus,
   },
   ]
+  console.log('Rendering Header. Auth status:', authStatus);
 
 
   return (
     <header className='py-3 shadow bg-gray-500'>
+     
       <Container>
-        <nav className='flex'>
+        <nav>
           <div className='mr-4'>
             <Link to='/'>
               <Logo width='70px'   />
@@ -63,13 +65,15 @@ function Header() {
             {authStatus && (
               <li>
                 <LogoutBtn />
+               
               </li>
             )}
           </ul>
         </nav>
-        </Container>
-    </header>
-  )
-}
+      </Container>
+      </header>
+    )
+  }
+        
 
 export default Header
