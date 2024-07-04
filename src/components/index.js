@@ -34,7 +34,7 @@ export {
     PostCard,
     Login,
     Signup,
-    PostForm
+    PostForm,
 
 
 
