@@ -1,7 +1,6 @@
 import React, { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Input, RTE, Select } from "..";
-
 import appwriteService from "../../appwrite/config";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -24,12 +23,12 @@ export default function PostForm({ post }) {
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
 
             if (file) {
-                appwriteService.deleteFile(post.featureimage);
+                appwriteService.deleteFile(post.featuredImage);
             }
 
             const dbPost = await appwriteService.updatePost(post.$id, {
                 ...data,
-                featureimage: file ? file.$id : undefined,
+                featuredImage: file ? file.$id : undefined,
             });
 
             if (dbPost) {
@@ -40,8 +39,8 @@ export default function PostForm({ post }) {
 
             if (file) {
                 const fileId = file.$id;
-                data.featureimage = fileId;
-                const dbPost = await appwriteService.createPost({ ...data,  userid: userData.$id });
+                data.featuredImage = fileId;
+                const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
 
                 if (dbPost) {
                     navigate(`/post/${dbPost.$id}`);
@@ -72,8 +71,8 @@ export default function PostForm({ post }) {
     }, [watch, slugTransform, setValue]);
 
     return (
-        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap ">
-            <div className="w-2/3 px-2 text-primary font-sans font-medium ">
+        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
+            <div className="w-2/3 px-2">
                 <Input
                     label="Title :"
                     placeholder="Title"
@@ -91,7 +90,7 @@ export default function PostForm({ post }) {
                 />
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
             </div>
-            <div className="w-1/3 px-2 text-primary font-sans font-medium">
+            <div className="w-1/3 px-2">
                 <Input
                     label="Featured Image :"
                     type="file"
@@ -102,22 +101,20 @@ export default function PostForm({ post }) {
                 {post && (
                     <div className="w-full mb-4">
                         <img
-                            src={appwriteService.getFilePreview(post.featureimage)}
+                            src={appwriteService.getFilePreview(post.featuredImage)}
                             alt={post.title}
                             className="rounded-lg"
                         />
                     </div>
                 )}
-                <Select 
+                <Select
                     options={["active", "inactive"]}
                     label="Status"
-                    className="mb-4 text-gray-900"
+                    className="mb-4"
                     {...register("status", { required: true })}
                 />
                 <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
-                 {post ? "Update" : "Submit"}
-                
- 
+                    {post ? "Update" : "Submit"}
                 </Button>
             </div>
         </form>

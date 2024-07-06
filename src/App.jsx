@@ -24,7 +24,10 @@ function App() {
     .finally(()=>setLoading(false))
   },[])
 
- // console.log(import.meta.env.VITE_APPWRITE_URL);
+  console.log(import.meta.env.VITE_APPWRITE_URL);
+  
+
+  
  return !loading ? (
   <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
     <div className='w-full block'>
