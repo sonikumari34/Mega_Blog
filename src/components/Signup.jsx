@@ -19,14 +19,14 @@ import {useForm} from 'react-hook-form'
         setError("")
         try{
             const userData = await authService.createAccount(data)
-            if(userData){
-                const userData= await authService.createAccount(data)
-                if(userData){
-                   
-                    if(userData) dispatch(login(userData));
-                    navigate("/")
+           
+               
+                if(userData ){
+                    dispatch(login(userData));
+                    
                 }
-            }
+                navigate('/')
+           
         }catch(error){
             setError(error.message)
         }

@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { useForm } from "react-hook-form";
-import { Button, Input, RTE, Select } from "..";
+import { Button, Input, RTE, Select } from "./index";
 import appwriteService from "../../appwrite/config";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -58,7 +58,7 @@ export default function PostForm({ post }) {
                 .replace(/\s/g, "-");
 
         return "";
-    }, []);
+    });
 
     React.useEffect(() => {
         const subscription = watch((value, { name }) => {
@@ -88,7 +88,7 @@ export default function PostForm({ post }) {
                         setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
                     }}
                 />
-                <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
+                <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")}  className="w-full mb-4" />
             </div>
             <div className="w-1/3 px-2">
                 <Input

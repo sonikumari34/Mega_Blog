@@ -53,7 +53,7 @@ export class Service{
         } catch (error) {
             console.log("Appwrite serive :: updatePost :: error", error);
         }
-    }
+    };
 
     async deletePost(slug){
         try {
@@ -67,8 +67,8 @@ export class Service{
         } catch (error) {
             console.log("Appwrite serive :: deletePost :: error", error);
             return false
-        }
-    }
+        };
+    };
 
     async getPost(slug){
         try {
@@ -77,7 +77,7 @@ export class Service{
                 conf.appwriteCollectionId,
                 slug
             
-            )
+            );
         } catch (error) {
             console.log("Appwrite serive :: getPost :: error", error);
             return false
@@ -124,15 +124,15 @@ export class Service{
         } catch (error) {
             console.log("Appwrite serive :: deleteFile :: error", error);
             return false
-        }
-    }
+        };
+    };
 
     getFilePreview(fileId){
         return this.bucket.getFilePreview(
             conf.appwriteBucketId,
             fileId
-        )
-    }
+        );
+    };
 }
 
 

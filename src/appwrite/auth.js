@@ -16,10 +16,11 @@ export class AuthService {
 
     async createAccount({email, password, name}) {
         try {
-            const userAccount = await this.account.create(ID.unique(), email, password, name);
+            const userAccount = await this.account.create(ID.unique(), email, password, name)
             if (userAccount) {
                 // call another method
-                return this.login({email, password});
+             await this.login({email, password});
+             return  userAccount;
             } else {
                return  userAccount;
             }
@@ -52,6 +53,7 @@ export class AuthService {
             await this.account.deleteSessions();
         } catch (error) {
             console.log("Appwrite serive :: logout :: error", error);
+            throw error;
         }
     }
 }
