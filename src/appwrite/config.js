@@ -7,8 +7,7 @@ export class Service{
     bucket;
     
     constructor(){
-        console.log("Appwrite URL:", import.meta.env.VITE_APPWRITE_URL);
-        console.log("Appwrite Project ID:", import.meta.env.VITE_APPWRITE_PROJECT_ID);
+       
 
         this.client
         .setEndpoint(conf.appwriteUrl)
@@ -131,8 +130,9 @@ export class Service{
         return this.bucket.getFilePreview(
             conf.appwriteBucketId,
             fileId
-        );
-    };
+        )
+    }
+    
 }
 
 

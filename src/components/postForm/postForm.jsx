@@ -58,7 +58,7 @@ export default function PostForm({ post }) {
                 .replace(/\s/g, "-");
 
         return "";
-    });
+    }, []);
 
     React.useEffect(() => {
         const subscription = watch((value, { name }) => {
@@ -88,7 +88,7 @@ export default function PostForm({ post }) {
                         setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
                     }}
                 />
-                <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")}  className="w-full mb-4" />
+                <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
             </div>
             <div className="w-1/3 px-2">
                 <Input

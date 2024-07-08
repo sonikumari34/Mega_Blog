@@ -35,32 +35,32 @@ export default function Post() {
     return post ? (
         <div className="py-8">
             <Container>
-                <div className="text-center w-full">
-                    <p className="text-sm text-white w-full font-bold">{post.title}</p>
-                </div>
-                <div className="h-[40vh] flex justify-center mb-4 relative rounded-xl p-2">
+                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
                     <img
-                            src={appwriteService.getFilePreview(post.featuredImage)}
-                            alt={post.title}
-                            className="rounded-xl"
+                        src={appwriteService.getFilePreview(post.featuredImage)}
+                        alt={post.title}
+                        className="rounded-xl"
                     />
 
                     {isAuthor && (
-                        <div className="absolute right-4 sm:top-6 top-[-12vh]">
+                        <div className="absolute right-6 top-6">
                             <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500 px-[10px] py-[7px] font-semibold rounded-xl hover:bg-[#007029]" className="mr-3">
+                                <Button bgColor="bg-green-500" className="mr-3">
                                     Edit
                                 </Button>
                             </Link>
-                            <Button bgColor="bg-red-500 px-[10px] py-[7px] font-semibold rounded-xl hover:bg-[##aa1414]" onClick={deletePost}>
+                            <Button bgColor="bg-red-500" onClick={deletePost}>
                                 Delete
                             </Button>
                         </div>
                     )}
                 </div>
-                <div className="browser-css text-white text-center">
-                    {parse(post.content)}
+                <div className="w-full mb-6">
+                    <h1 className="text-2xl font-bold">{post.title}</h1>
                 </div>
+                <div className="browser-css">
+                    {parse(post.content)}
+                    </div>
             </Container>
         </div>
     ) : null;
