@@ -1,8 +1,11 @@
-# React + Vite
+Mega Blog Project
+Welcome to Mega Blog, a powerful blogging platform built with React, Redux, and Appwrite for backend services.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Features
+User Authentication: Secure user authentication and authorization using Appwrite.
+Blog Management: Create, edit, and delete blog posts with image upload and display functionality.
+Responsive Design: Optimized for various screen sizes using React responsive techniques.
+Styled with Tailwind CSS: Modern and clean UI design using Tailwind CSS utilities.
+Technologies Used
+Frontend: React, Redux, Tailwind CSS
+Backend: Appwrite (Authentication, Database, Storage)
